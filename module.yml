@@ -1,0 +1,8 @@
+name: libc
+description: VSL library for interfacing with libc functions
+
+version: 0.1.0
+target: obj
+
+sources:
+    - src/*.vsl

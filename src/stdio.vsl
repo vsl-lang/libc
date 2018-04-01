@@ -1,0 +1,46 @@
+/**
+ * VSL C interfaces for #include <stdio.h>
+ */
+
+@mock(opaquepointer) public class FILE {}
+public typealias CChar = UInt8
+public typealias CInt = Int
+public typealias CSize = UInt64
+public typealias CLongInt = UInt64
+@mock(opaquepointer) public class CPos {}
+
+public func put(string: ByteSequence) -> Void external(puts);
+public func put(string: ByteSequence, stream: FILE) -> Void external(fputs);
+public func put(char: CChar) -> Void external(putchar);
+public func put(char: CChar, stream: FILE) -> Void external(fputc);
+
+public func rename(oldname: ByteSequence, newname: ByteSequence) -> CInt external(rename);
+public func remove(filename: ByteSequence) -> CInt external(rename);
+
+public func rewind(file: FILE) -> Void external(rewind);
+
+public func getChar(file: FILE) -> CChar external(fgetc);
+public func getChar() -> CChar external(getchar);
+public func gets(string: ByteSequence, length: CInt, stream: FILE) -> ByteSequence external(fgets);
+public func gets(string: ByteSequence) -> ByteSequence external(gets);
+
+public func write(data: ByteSequence, size: CSize, length: CSize, stream: FILE) -> CSize external(fwrite);
+public func tell(stream: FILE) -> CLongInt external(ftell);
+public func setpos(stream: FILE, position: CPos) -> CInt external(fsetpos);
+public func seek(stream: FILE, offset: CLongInt, seek: CInt) -> CInt external(fseek);
+public func reopen(filename: ByteSequence, mode: ByteSequence, stream: FILE) -> FILE external(freopen);
+public func read(data: ByteSequence, size: CSize, length: CSize, stream: FILE) -> FILE external(fread);
+public func open(filename: ByteSequence, mode: ByteSequence) -> FILE external(fopen);
+public func getpos(stream: FILE, pos: CPos) -> CInt external(fgetpos);
+public func flush(stream: FILE) -> CInt external(fflush);
+public func error(stream: FILE) -> CInt external(ferror);
+public func eof(stream: FILE) -> CInt external(feof);
+public func clearerr(stream: FILE) -> Void external(clearerr);
+public func close(stream: FILE) -> CInt external(fclose);
+
+public func unget(char: CChar, stream: FILE) -> CChar external(ungetc);
+
+public func tmpnam(name: ByteSequence) -> ByteSequence external(tmpnam);
+public func tmpfile() -> FILE external(tmpfile);
+
+public func perror(message: ByteSequence) -> Void external(perror);
